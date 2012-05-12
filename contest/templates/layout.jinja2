@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="shortcut icon" href="./static/favicon.ico" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <link rel="stylesheet" type="text/css" href="{{ request.static_path('contest:static/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ request.static_path('contest:static/css/bootstrap-responsive.min.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ request.static_path('contest:static/css/form.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ request.static_path('contest:static/css/beautify.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ request.static_path('contest:static/css/jquery-ui-timepicker-addon.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ request.static_path('contest:static/css/jquery.autocomplete.css') }}" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ request.static_path('contest:static/js/bootstrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ request.static_path('contest:static/js/deform.js') }}"></script>
+        <script type="text/javascript" src="{{ request.static_path('contest:static/js/jquery-ui-1.8.11.custom.min.js') }}"></script>
+        <script type="text/javascript" src="{{ request.static_path('contest:static/js/jquery-ui-timepicker-addon.js') }}"></script>
+        <script type="text/javascript" src="{{ request.static_path('contest:static/js/jquery.form.js') }}"></script>
+        <script type="text/javascript" src="{{ request.static_path('contest:static/js/jquery.maskedinput-1.2.2.min.js') }}"></script>
+        <meta name="copyright" content="Copyright (C) yosida95 All Rights Reserved." />
+        <meta name="Author" content="yosida95" />
+        <meta name="robots" content="ALL" />
+        <meta name="description" content=" " />
+        <title>{% block title%}{% endblock %}</title>
+        <style type="text/css">
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+            .dropdown-toggle {
+                cursor: pointer;
+            }
+        </style>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-15957452-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    </head>
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a href="{{ request.route_path('home') }}" class="brand">next ToDo</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                        </ul>
+                    </div>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right">
+                            {% if request.user %}
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown">Login as {{ request.user.handle }}<span class="caret">&nbsp;</span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="">マイページ</a></li>
+                                    <li class="divider">&nbsp;</li>
+                                    <li><a href="{{ request.route_path('logout') }}">ログアウト</a></li>
+                                </ul>
+                            </li>
+                            {% else %}
+                            <li><a href="/join">Join!</a></li>
+                            <li><a href="/login">Login!</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            {% block body %}{% endblock %}
+        </div>
+
+        <div class="container-fluid">
+            <div class="span12">
+                Copyright (C) <a href="http://yosida95.com/">yosida95</a> All Rights Reserved.
+            </div>
+        </div>
+    </body>
+</html>

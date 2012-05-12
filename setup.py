@@ -16,12 +16,15 @@ requires = [
     'waitress',
     'pyramid_jinja2',
     'PyMySQL',
+    'pyramid_deform',
+    'colander',
+    'deform',
     ]
 
 setup(name='contest',
       version='0.0',
       description='contest',
-      long_description=README + '\n\n' +  CHANGES,
+      long_description=README + '\n\n' + CHANGES,
       classifiers=[
         "Programming Language :: Python",
         "Framework :: Pylons",
@@ -44,4 +47,3 @@ setup(name='contest',
       initialize_contest_db = contest.scripts.initializedb:main
       """,
       )
-

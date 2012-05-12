@@ -7,7 +7,9 @@ from pyramid.paster import (
     get_appsettings,
     setup_logging,
     )
-from ..models import DBSession
+from ..models import (
+    user,
+    )
 
 
 def usage(argv):
@@ -24,4 +26,4 @@ def main(argv=sys.argv):
     setup_logging(config_uri)
     settings = get_appsettings(config_uri)
     engine = engine_from_config(settings, 'sqlalchemy.')
-    DBSession.configure(bind=engine)
+    user.Base.metadata.create_all(engine)
