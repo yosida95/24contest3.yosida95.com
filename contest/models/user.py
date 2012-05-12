@@ -35,7 +35,7 @@ class Login(Base):
     id = Column(Integer, autoincrement=True, primary_key=True)
     user_id = Column(Integer, ForeignKey(User.id), unique=True)
     user = relationship(User, backref=backref('login', uselist=False))
-    password = Column(Unicode(40))
+    password = Column(Unicode(50))
     last_authenticated = Column(DateTime)
 
     def __init__(self, user):
