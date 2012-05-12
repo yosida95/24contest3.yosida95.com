@@ -21,12 +21,10 @@ class User(Base):
 
     id = Column(Integer, autoincrement=True, primary_key=True)
     handle = Column(Unicode(10), unique=True)
-    email = Column(Unicode(100))
     joined = Column(DateTime(), default=datetime.utcnow)
 
-    def __init__(self, handle, email):
+    def __init__(self, handle):
         self.handle = handle
-        self.email = email
 
 
 class Login(Base):

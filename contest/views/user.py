@@ -43,7 +43,7 @@ class Join(View):
         except ValidationFailure, why:
             response = {'form': why.render()}
         else:
-            user = UserModel(captured.get(u'handle'), captured.get(u'email'))
+            user = UserModel(captured.get(u'handle'))
             login = LoginModel(user)
             login.set_password(captured.get(u'password'))
             DBSession.add_all((user, login))

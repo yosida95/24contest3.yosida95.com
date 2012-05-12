@@ -136,3 +136,4 @@ class Home(View):
                 'calendar': calendar,
                 'today_on_history': today_on_history,
             }
+        return {}

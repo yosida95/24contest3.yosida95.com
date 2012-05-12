@@ -171,9 +171,23 @@
             <div class="row-fluid">
                 <div class="span12">
                     <div class="hero-unit">
-                       <h1>next ToDo</h1>
-                        <p>仕事帰りや学校帰りにやりたい事を登録するサービス</p>
+                       <h1>After Working Fun!</h1>
+                        <p>仕事や学校が終わったその後を楽しく過ごすお手伝いをするサービス</p>
+                        <p class="pull-right"><a class="btn btn-large btn-info" href="{{ request.route_path('join') }}">Join</a>
+                        <a class="btn btn-large btn-primary" href="{{ request.route_path('login') }}">Login</a></p>
                     </div>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <h2>How To Use ?</h2>
+                    <ol>
+                        <li>1日の始め、朝にその日の帰宅後に「やりたいこと」を決めて登録する</li>
+                        <li>昼間しんどくなった時でも、朝決めた「やりたいこと」をしている自分を想像すれば不思議と頑張れる！</li>
+                        <li>仕事や学校が終わったら、朝から楽しみにしていたことに全力で取り組む</li>
+                        <li>就寝前に、今朝登録した「やりたいこと」のうち達成できたものを振り返って記録する</li>
+                        <li>全力のリフレッシュで1日の終りが楽しめることはもちろん、楽しみのために頑張れた昼間も併せて、1日を通して充実する！</li>
+                    </ol>
                 </div>
             </div>
         {% endif %}
