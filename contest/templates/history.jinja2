@@ -1,0 +1,74 @@
+{% extends "layout.jinja2" %}
+
+{% block body %}
+            <div class="row-fluid">
+                <div class="span9">
+                    <h2>やりたかったこと</h2>
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>やりたかったこと</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% if list.plans %}
+                        {% for plan in list.plans %}
+                            {% if not plan.deleted %}
+                            <tr>
+                                <td>
+                                    {% if plan.done %}
+                                    <span class="label label-success">実行済</span>
+                                    {% else %}
+                                    <span class="label label-warning">未実行</span>
+                                    {% endif %}
+                                    {{ plan.subject }}
+                                </td>
+                            </tr>
+                            {% endif %}
+                        {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td>やりたいことは登録されていません</td>
+                            </tr>
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="span3">
+                    <h2>過去の記録</h2>
+                    <table class="table table-bordered" id="calendar">
+                        <caption>{{ calendar[0].year }}年{{ calendar[0].month }}月</caption>
+                        <thead>
+                            <th>日</th>
+                            <th>月</th>
+                            <th>火</th>
+                            <th>水</th>
+                            <th>木</th>
+                            <th>金</th>
+                            <th>土</th>
+                        </thead>
+                        <tbody>
+                            {% for week in calendar[1] %}
+                            <tr>
+                                {% for day in week %}
+                                <td>
+                                    {% if  calendar[0] <= day <= calendar[2] %}
+                                    {% if day <= today_on_history %}
+                                    <a href="{{ request.route_path('history', date=day.strftime('%Y-%m-%d')) }}">{{ day.day }}</a>
+                                    {% else %}
+                                    {{ day.day }}
+                                    {% endif %}
+                                    {% else %}
+                                    &nbsp;
+                                    {% endif %}
+                                </td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+{% endblock %}

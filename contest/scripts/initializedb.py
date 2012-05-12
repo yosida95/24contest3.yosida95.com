@@ -9,6 +9,7 @@ from pyramid.paster import (
     )
 from ..models import (
     user,
+    plan,
     )
 
 
@@ -27,3 +28,4 @@ def main(argv=sys.argv):
     settings = get_appsettings(config_uri)
     engine = engine_from_config(settings, 'sqlalchemy.')
     user.Base.metadata.create_all(engine)
+    plan.Base.metadata.create_all(engine)
